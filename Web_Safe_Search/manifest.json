@@ -1,0 +1,33 @@
+{
+  "name": "Web safe search (SAM)",
+  "description": "Blocks 18+ and adult content websites, replacing them with a safe message",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["tabs"],
+  "background":{
+
+    "service_worker":"service_worker.js"
+  
+  },
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": {
+      "16": "/icons/lock.png",
+      "32": "/icons/lock.png",
+      "48": "/icons/lock.png",
+      "128": "/icons/lock.png"
+  }
+},
+"icons": {
+  "16": "/icons/lock.png",
+  "32": "/icons/lock.png",
+  "48": "/icons/lock.png",
+  "128": "/icons/lock.png"
+  },
+  "content_scripts":[{
+    "matches":["<all_urls>"],
+    "include_globs":["*porn*","*xxx*","*adult*","*sex*","*18+*","*nsfw*","*fuck*"],
+    "js":["content.js"],
+    "run_at":"document_start"
+  }]
+}
